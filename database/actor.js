@@ -16,7 +16,7 @@ const listarActores = async () => {
 };
 const registrarActores = async (data) => {
   const result = await pool.query(
-    "INSERT INTO actor(first_name, last_name, last_update) VALUES($1, $2, now())",
+    "INSERT INTO actor(first_name, last_name, last_update) VALUES($1, $2, now()) RETURNING *",
     [data.first_name, data.last_name]
   );
   return result.rows;
