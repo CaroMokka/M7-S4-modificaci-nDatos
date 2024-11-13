@@ -10,17 +10,24 @@ const registroActor = {
   last_name: "Cruise",
 };
 
-listarActores()
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => console.log(err));
+const modificarActor = {
+    first_name: "Emily",
+    last_name: "Blunt"
+}
 
-registrarActores(registroActor)
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
+// listarActores()
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => console.log(err));
 
-const result3 = modificarActores();
-console.log(result3);
-const result4 = eliminarActores();
-console.log(result4);
+// registrarActores(registroActor)
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
+
+modificarActores(modificarActor, 205).then((res)=>{
+    console.log(res)
+}).catch((err)=>console.log(err))
+
+// const result4 = eliminarActores();
+// console.log(result4);
