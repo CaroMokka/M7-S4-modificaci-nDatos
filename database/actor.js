@@ -31,8 +31,9 @@ const modificarActores = async (data, id) => {
     const result = await pool.query(argumentos)
     return result.rows
 };
-const eliminarActores = () => {
-  return "Eliminar actores";
+const eliminarActores = async (id) => {
+    const result = await pool.query("DELETE FROM actor WHERE actor_id=$1 RETURNING *", [id])
+    return result.rows
 };
 
 export { listarActores, registrarActores, modificarActores, eliminarActores };

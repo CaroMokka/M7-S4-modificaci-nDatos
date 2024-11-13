@@ -4,30 +4,12 @@ import {
   modificarActores,
   eliminarActores,
 } from "./database/actor.js";
+import { createServer } from "http"
 
-const registroActor = {
-  first_name: "Tom",
-  last_name: "Cruise",
-};
+const port = 3000
 
-const modificarActor = {
-    first_name: "Emily",
-    last_name: "Blunt"
-}
+const server = createServer((req, res)=>{
 
-// listarActores()
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => console.log(err));
+})
+server.listen(port, ()=> console.log(`Servidor escuchando por el puerto ${port}`))
 
-// registrarActores(registroActor)
-//   .then((res) => console.log(res))
-//   .catch((err) => console.log(err));
-
-modificarActores(modificarActor, 205).then((res)=>{
-    console.log(res)
-}).catch((err)=>console.log(err))
-
-// const result4 = eliminarActores();
-// console.log(result4);
