@@ -32,6 +32,20 @@ const server = createServer( async (req, res)=>{
                 res.end(JSON.stringify({ message: "Actor registrado exxitosamente", data: actor }))
             })
         }
+        if(method == "PUT"){   
+            let body = ""
+            const id = Number(urlParsed.query.id)
+           
+            req.on("data", (chunk)=> {
+                body += chunk.toString()
+            })
+            req.on("end", async () => {
+                body = JSON.parse(body)
+                const actor = await modificarActores(body, id)
+                res.end(JSON.stringify({message: "Actor modificado con éxito", data: actor}))
+                
+            })
+        }
     }
 
     
