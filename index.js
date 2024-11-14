@@ -46,6 +46,12 @@ const server = createServer( async (req, res)=>{
                 
             })
         }
+        if(method == "DELETE"){
+            const id = Number(urlParsed.query.id)
+            const actor = await eliminarActores(id)
+            res.end(JSON.stringify({ message: "Actor eliminado éxitosamente", data: actor }))
+            console.log(actor)
+        }
     }
 
     
