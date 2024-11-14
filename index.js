@@ -9,13 +9,22 @@ import url from "url"
 
 const port = 3000
 
-const server = createServer((req, res)=>{
+const server = createServer( async (req, res)=>{
     const method = req.method
     const urlParsed = url.parse(req.url, true)
-    console.log(urlParsed)
+    const pathname = urlParsed.pathname
 
     res.setHeader("Content-Type", "application/json")
-    res.end(JSON.stringify({ message: "Respuesta a petición" }))
+
+    if(pathname == "/actor"){
+        if(method == "GET"){
+            const actores = await listarActores()
+            res.end(JSON.stringify({ message: "Listado de actores", data: actores }))
+        }
+    }
+
+    
+    
 })
 server.listen(port, ()=> console.log(`Servidor escuchando por el puerto ${port}`))
 
