@@ -21,6 +21,17 @@ const server = createServer( async (req, res)=>{
             const actores = await listarActores()
             res.end(JSON.stringify({ message: "Listado de actores", data: actores }))
         }
+        if(method == "POST"){   
+            let body = ""
+            req.on("data", (chunk)=> {
+                body += chunk.toString()
+            })
+            req.on("end", async () => {
+                body = JSON.parse(body)
+                const actor = await registrarActores(body)
+                res.end(JSON.stringify({ message: "Actor registrado exxitosamente", data: actor }))
+            })
+        }
     }
 
     
